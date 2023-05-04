@@ -1,0 +1,54 @@
+<div class="w-100 bg-slate-100 p-8 my-8 rounded-lg">
+    <form (submit)="handleSubmit($event)" class="w-100 flex flex-col gap-8">
+        <div class="flex flex-col gap-2">
+            <span class="text-lg text-slate-800">Frase ou pensamento: </span>
+            <textarea
+                type="textarea"
+                name="sentence"
+                [(ngModel)]="form.sentence"
+                class="w-100 border-0 bg-slate-300 rounded-md p-2"
+            ></textarea>
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <span class="text-lg text-slate-800">Autor ou fonte: </span>
+            <input 
+                name="author"
+                [(ngModel)]="form.author"
+                class="h-10 w-100 border-0 bg-slate-300 rounded-md p-2"
+            />
+        </div>
+
+        <div class="flex items-center justify-between gap-8">
+            <div class="flex flex-col gap-4 items-center">
+                <div class="flex items-center gap-2">
+                    <input type="radio" [(ngModel)]="form.model" name="model" value="1" />
+                    <span class="text-lg text-slate-800">Opção 1</span>
+                </div>
+                <app-card [type]="1" [autor]="form.author" [sentence]="form.sentence"></app-card>
+            </div>
+            <div class="flex flex-col gap-4 items-center">
+                <div class="flex items-center gap-2">
+                    <input type="radio" [(ngModel)]="form.model" name="model" value="2" />
+                    <span class="text-lg text-slate-800">Opção 2</span>
+                </div>
+                <app-card [type]="2" [autor]="form.author" [sentence]="form.sentence"></app-card>
+            </div>
+            <div class="flex flex-col gap-4 items-center">
+                <div class="flex items-center gap-2">
+                    <input type="radio" [(ngModel)]="form.model" name="model" value="3" />
+                    <span class="text-lg text-slate-800">Opção 3</span>
+                </div>
+                <app-card [type]="3" [autor]="form.author" [sentence]="form.sentence"></app-card>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="flex gap-4 justify-center">
+            <button (click)="handleClear()" class="p-4 text-2xl rounded-2xl text-slate-800 border-solid border-2 border-slate-800">Cancelar</button>
+            <button type="submit" class="p-4 text-2xl rounded-2xl bg-slate-800 text-white border-0">Salvar pensamento</button>
+        </div>
+
+    </form>
+</div>
