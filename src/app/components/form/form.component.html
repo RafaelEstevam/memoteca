@@ -25,28 +25,28 @@
                     <input type="radio" [(ngModel)]="form.model" name="model" value="1" />
                     <span class="text-lg text-slate-800">Opção 1</span>
                 </div>
-                <app-card [type]="1" [autor]="form.author" [sentence]="form.sentence"></app-card>
+                <app-card type="1" [autor]="form.author" [sentence]="form.sentence"></app-card>
             </div>
             <div class="flex flex-col gap-4 items-center">
                 <div class="flex items-center gap-2">
                     <input type="radio" [(ngModel)]="form.model" name="model" value="2" />
                     <span class="text-lg text-slate-800">Opção 2</span>
                 </div>
-                <app-card [type]="2" [autor]="form.author" [sentence]="form.sentence"></app-card>
+                <app-card type="2" [autor]="form.author" [sentence]="form.sentence"></app-card>
             </div>
             <div class="flex flex-col gap-4 items-center">
                 <div class="flex items-center gap-2">
                     <input type="radio" [(ngModel)]="form.model" name="model" value="3" />
                     <span class="text-lg text-slate-800">Opção 3</span>
                 </div>
-                <app-card [type]="3" [autor]="form.author" [sentence]="form.sentence"></app-card>
+                <app-card type="3" [autor]="form.author" [sentence]="form.sentence"></app-card>
             </div>
         </div>
 
         <hr/>
 
         <div class="flex gap-4 justify-center">
-            <button (click)="handleClear()" class="p-4 text-2xl rounded-2xl text-slate-800 border-solid border-2 border-slate-800">Cancelar</button>
+            <button routerLink="/" (click)="handleClear()" class="p-4 text-2xl rounded-2xl text-slate-800 border-solid border-2 border-slate-800">Cancelar</button>
             <button type="submit" class="p-4 text-2xl rounded-2xl bg-slate-800 text-white border-0">Salvar pensamento</button>
         </div>
 

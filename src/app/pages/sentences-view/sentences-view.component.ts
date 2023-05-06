@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
+interface sentenceProps {
+  author: string,
+  sentence: string,
+  type: '1' | '2' | '3'
+}
+
 @Component({
   selector: 'app-sentences-view',
   templateUrl: './sentences-view.component.html',
@@ -7,7 +13,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SentencesViewComponent implements OnInit {
 
-  constructor() { }
+  sentences: sentenceProps[] = [];
+
+  constructor() {
+    this.sentences = [
+      {type: '1', sentence: 'Loren ipsun', author: 'Anonymous'},
+      {type: '1', sentence: 'Loren ipsun', author: 'Anonymous'},
+      {type: '2', sentence: 'Loren ipsun', author: 'Anonymous'},
+      {type: '1', sentence: 'Loren ipsun', author: 'Anonymous'},
+      {type: '3', sentence: 'Loren ipsun', author: 'Anonymous'}
+    ]
+  }
 
   ngOnInit(): void {
   }

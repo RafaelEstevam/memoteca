@@ -1,1 +1,20 @@
-<p>sentences-view works!</p>
+<div class="flex flex-col gap-8 p-8 my-8 rounded-lg w-100 bg-slate-100">
+    <div class="flex gap-4 justify-center">
+        <button routerLink="/sentence" class="p-4 text-2xl rounded-2xl bg-slate-800 text-white border-0">Criar pensamento</button>
+    </div>
+
+    <div *ngIf="sentences.length === 0">
+        <p class="text-lg text-center">Ainda não há pensamentos para mostrar.</p>
+    </div>
+    
+    <div class="flex gap-8 w-100 flex-wrap">
+        <div *ngFor="let item of sentences">
+            <app-card
+                autor="{{item.author}}"
+                type="{{item.type}}"
+                sentence="{{item.sentence}}"
+            >
+            </app-card>
+        </div>
+    </div>
+</div>
