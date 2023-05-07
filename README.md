@@ -1,27 +1,50 @@
-# Memo
+# Memoteca
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
+CRUD de pensamentos feitos com ![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white).
 
-## Development server
+Aplicação desenvolvida para estudos de tecnologias do frontend.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Iniciando aplicação
 
-## Code scaffolding
+Instalando dependências do frontend.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+npm install
+```
 
-## Build
+Iniciando o frontend.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+npm start
+```
 
-## Running unit tests
+O frontend será iniciado em http://localhost:4200
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Backend
 
-## Running end-to-end tests
+Backend construído com JSON Server somente para simular uma integração através de API Rest. O backend encontra-se dentro de ./back.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Instalando dependências do backend.
+```
+npm install
+```
 
-## Further help
+Iniciando o backend.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page. 
+```
+npm start
+```
+
+O backend será iniciado em http://localhost:3000
+
+## Resultado
+
+### Tela inicial
+
+![Tela inicial](./localhost_4200_.png)
+
+### Tela de cadastro de pensamentos
+
+![Tela de cadastro de pensamentos](./localhost_4200_sentence.png)
+
+

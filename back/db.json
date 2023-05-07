@@ -2,21 +2,9 @@
   "sentences": [
     {
       "id": 1,
-      "sentence": "teste 123456",
+      "sentence": "CRUD simples para salvar trechos de música, citações ou lembretes rápidos.",
       "model": "1",
-      "author": "teste123"
-    },
-    {
-      "id": 2,
-      "sentence": "Pensamento 2",
-      "model": "2",
-      "author": "pensamento"
-    },
-    {
-      "id": 3,
-      "sentence": "Pensamento 3",
-      "model": "3",
-      "author": "pensamento"
+      "author": "Rafael Estevam de Oliveira"
     }
   ]
 }
