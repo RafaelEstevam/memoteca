@@ -5,7 +5,8 @@ import { SentencesViewComponent } from './pages/sentences-view/sentences-view.co
 
 const routes: Routes = [
   {path: '', component: SentencesViewComponent},
-  {path: 'sentence', component: SentenceViewComponent}
+  {path: 'sentence', component: SentenceViewComponent},
+  {path: 'sentence/:id', component: SentenceViewComponent}
 ];
 
 @NgModule({

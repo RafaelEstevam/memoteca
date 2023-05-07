@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-interface sentenceProps {
-  author: string,
-  sentence: string,
-  type: '1' | '2' | '3'
-}
+import { sentenceProps } from 'src/app/interfaces/interfaces';
+import { SentencesViewService } from './sentences-view.service';
 
 @Component({
   selector: 'app-sentences-view',
@@ -15,17 +11,17 @@ export class SentencesViewComponent implements OnInit {
 
   sentences: sentenceProps[] = [];
 
-  constructor() {
-    this.sentences = [
-      {type: '1', sentence: 'Loren ipsun', author: 'Anonymous'},
-      {type: '1', sentence: 'Loren ipsun', author: 'Anonymous'},
-      {type: '2', sentence: 'Loren ipsun', author: 'Anonymous'},
-      {type: '1', sentence: 'Loren ipsun', author: 'Anonymous'},
-      {type: '3', sentence: 'Loren ipsun', author: 'Anonymous'}
-    ]
+  constructor(private service: SentencesViewService) {
+  }
+
+  refreshPage() {
+    this.service.list().subscribe((sentences) => {
+      this.sentences = sentences
+    })
   }
 
   ngOnInit(): void {
+    this.refreshPage()
   }
 
 }

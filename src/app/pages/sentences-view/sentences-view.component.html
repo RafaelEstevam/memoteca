@@ -10,8 +10,9 @@
     <div class="flex gap-8 w-100 flex-wrap">
         <div *ngFor="let item of sentences">
             <app-card
-                autor="{{item.author}}"
-                type="{{item.type}}"
+                id="{{item.id}}"
+                author="{{item.author}}"
+                model="{{item.model}}"
                 sentence="{{item.sentence}}"
             >
             </app-card>
