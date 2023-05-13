@@ -1,45 +1,67 @@
 <div class="w-100 bg-slate-100 p-8 my-8 rounded-lg">
-    <form (submit)="handleSubmit($event)" class="w-100 flex flex-col gap-8">
+    <form [formGroup]="formData" (submit)="handleSubmit($event)" class="w-100 flex flex-col gap-8">
         <div class="flex flex-col gap-2">
             <span class="text-lg text-slate-800">Frase ou pensamento: </span>
             <textarea
                 type="textarea"
-                name="sentence"
-                [(ngModel)]="form.sentence"
+                formControlName="sentence"
                 class="w-100 border-0 bg-slate-300 rounded-md p-2"
             ></textarea>
+            <div *ngIf="formData.get('sentence')?.errors?.['minlength'] && formData.get('sentence')?.touched">
+                <p class="text-red-700">Este campo está preenchido incorretamente.</p>
+            </div>
+            <div *ngIf="formData.get('sentence')?.errors?.['required'] && formData.get('sentence')?.touched">
+                <p class="text-red-700">Este campo não está preenchido.</p>
+            </div>
         </div>
 
         <div class="flex flex-col gap-2">
             <span class="text-lg text-slate-800">Autor ou fonte: </span>
             <input 
-                name="author"
-                [(ngModel)]="form.author"
+                formControlName="author"
                 class="h-10 w-100 border-0 bg-slate-300 rounded-md p-2"
             />
+            <div *ngIf="formData.get('author')?.errors && formData.get('sentence')?.touched">
+                <p class="text-red-700">Este campo não está preenchio</p>
+            </div>
         </div>
 
         <div class="flex items-center justify-between gap-8">
             <div class="flex flex-col gap-4 items-center">
                 <div class="flex items-center gap-2">
-                    <input type="radio" [(ngModel)]="form.model" name="model" value="1" />
+                    <input type="radio" formControlName="model" value="1" />
                     <span class="text-lg text-slate-800">Opção 1</span>
                 </div>
-                <app-card [model]="'1'" [author]="form.author" [sentence]="form.sentence"></app-card>
+                <app-card
+                    [author]="formData.get('author')?.value"
+                    [sentence]="formData.get('sentence')?.value"
+                    [model]="'1'"
+                >
+                </app-card>
             </div>
             <div class="flex flex-col gap-4 items-center">
                 <div class="flex items-center gap-2">
-                    <input type="radio" [(ngModel)]="form.model" name="model" value="2" />
+                    <input type="radio" formControlName="model" value="2" />
                     <span class="text-lg text-slate-800">Opção 2</span>
                 </div>
-                <app-card [model]="'2'" [author]="form.author" [sentence]="form.sentence"></app-card>
+                <app-card
+                    [author]="formData.get('author')?.value"
+                    [sentence]="formData.get('sentence')?.value"
+                    [model]="'2'"
+                >
+                </app-card>
             </div>
             <div class="flex flex-col gap-4 items-center">
                 <div class="flex items-center gap-2">
-                    <input type="radio" [(ngModel)]="form.model" name="model" value="3" />
+                    <input type="radio" formControlName="model" value="3" />
                     <span class="text-lg text-slate-800">Opção 3</span>
                 </div>
-                <app-card [model]="'3'" [author]="form.author" [sentence]="form.sentence"></app-card>
+                <app-card
+                [author]="formData.get('author')?.value"
+                [sentence]="formData.get('sentence')?.value"
+                [model]="'3'"
+            >
+            </app-card>
             </div>
         </div>
 
@@ -47,7 +69,14 @@
 
         <div class="flex gap-4 justify-center">
             <button routerLink="/" (click)="handleClear()" class="p-4 text-2xl rounded-2xl text-red-700 border-solid border-2 border-red-700">Cancelar</button>
-            <button type="submit" class="p-4 text-2xl rounded-2xl bg-slate-800 text-white border-0">Salvar pensamento</button>
+            <button
+                [disabled]="!formData.valid"
+                type="submit"
+                class="p-4 text-2xl rounded-2xl text-white border-0"
+                [ngClass]="enableButton()"
+            >
+                Salvar pensamento
+            </button>
         </div>
 
     </form>

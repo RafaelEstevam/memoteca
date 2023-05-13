@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { sentenceProps } from 'src/app/interfaces/interfaces';
 import { SentencesViewService } from 'src/app/pages/sentences-view/sentences-view.service';
@@ -10,51 +11,70 @@ import { SentencesViewService } from 'src/app/pages/sentences-view/sentences-vie
 })
 export class FormComponent implements OnInit {
 
-  form: sentenceProps = {
-    id: '',
-    sentence: '',
-    model: '',
-    author: ''
-  }
+  // form: sentenceProps = {
+  //   id: '',
+  //   sentence: '',
+  //   model: '',
+  //   author: ''
+  // }
+
+  formData!: FormGroup; 
 
   handleSubmit($e:any) {
     $e.preventDefault;
-    if(!this.form.id){
-      this.service.create(this.form).subscribe(() => {
-        this.router.navigate(['/']);
-      });
-    }else{
-      this.service.update(this.form, this.form.id).subscribe(() => {
-        this.router.navigate(['/']);
-      })
+    if(this.formData.valid){
+      if(!this.formData.value.id){
+        this.service.create(this.formData.value).subscribe(() => {
+          this.router.navigate(['/']);
+        });
+      }else{
+        this.service.update(this.formData.value, this.formData.value.id).subscribe(() => {
+          this.router.navigate(['/']);
+        })
+      }
     }
   }
 
   handleClear(){
-    this.form = {
-      sentence: '',
-      model: '',
-      author: ''
-    };
-
     this.router.navigate(['/']);
   }
 
   constructor(
     private service: SentencesViewService,
     private router: Router,
-    private activateRouter: ActivatedRoute
+    private activateRouter: ActivatedRoute,
+    private formBuilder: FormBuilder
   ) {
     const id = this.activateRouter.snapshot.params['id'];
     if(id){
       this.service.get(id).subscribe((sentence) => {
-        this.form = sentence;
+        this.formData = this.formBuilder.group({
+          sentence: sentence.sentence,
+          author: sentence.author,
+          model: sentence.model,
+          id: sentence.id
+        });
       });
     }
   }
 
   ngOnInit(): void {
-    
+    this.formData = this.formBuilder.group({
+      sentence: ['Loren Ipsum', Validators.compose([
+        Validators.required,
+        Validators.minLength(30)
+      ])],
+      author: ['Anonymous', [Validators.required]],
+      model: ['1', [Validators.required]]
+    })
+  }
+
+  enableButton() {
+    if(!this.formData.valid){
+      return 'bg-slate-300'
+    }else{
+      return 'bg-slate-800'
+    }
   }
 
 }

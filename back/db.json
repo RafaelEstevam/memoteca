@@ -1,10 +1,10 @@
 {
   "sentences": [
     {
-      "id": 1,
-      "sentence": "CRUD simples para salvar trechos de música, citações ou lembretes rápidos.",
+      "sentence": "CRUD simples para salvar trechos de música, citações ou lembretes rápidos. Fazendo melhorias e validações.",
+      "author": "Rafael Estevam de Oliveira",
       "model": "1",
-      "author": "Rafael Estevam de Oliveira"
+      "id": 1
     }
   ]
 }
