@@ -11,13 +11,6 @@ import { SentencesViewService } from 'src/app/pages/sentences-view/sentences-vie
 })
 export class FormComponent implements OnInit {
 
-  // form: sentenceProps = {
-  //   id: '',
-  //   sentence: '',
-  //   model: '',
-  //   author: ''
-  // }
-
   formData!: FormGroup; 
 
   handleSubmit($e:any) {

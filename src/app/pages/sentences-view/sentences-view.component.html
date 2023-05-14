@@ -18,4 +18,11 @@
             </app-card>
         </div>
     </div>
+
+    <div class="flex justify-center">
+        <app-search-button 
+            [hasMoreSentences]="hasMoreSentences"
+            (click)="refreshCurrentPage()"
+        ></app-search-button>
+    </div>
 </div>

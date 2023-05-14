@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SentenceViewComponent } from './pages/sentence-view/sentence-view.component';
 import { SentencesViewComponent } from './pages/sentences-view/sentences-view.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchButtonComponent } from './components/search-button/search-button.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormComponent,
     CardComponent,
     SentenceViewComponent,
-    SentencesViewComponent
+    SentencesViewComponent,
+    SearchButtonComponent
   ],
   imports: [
     BrowserModule,

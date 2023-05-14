@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { sentenceProps } from 'src/app/interfaces/interfaces';
 import { Observable } from 'rxjs';
 
@@ -11,8 +11,9 @@ export class SentencesViewService {
 
   private API = 'http://localhost:3000/sentences';
 
-  list(): Observable<sentenceProps[]>{
-    return this.http.get<sentenceProps[]>(this.API);
+  list(page:number, limit:number): Observable<sentenceProps[]>{
+    let params = new HttpParams().set("_page", page).set("_limit", limit)
+    return this.http.get<sentenceProps[]>(this.API, {params});
   }
 
   get(id: number | string){
