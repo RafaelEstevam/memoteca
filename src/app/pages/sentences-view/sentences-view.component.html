@@ -3,10 +3,18 @@
         <button routerLink="/sentence" class="p-4 text-2xl rounded-2xl bg-slate-800 text-white border-0">Criar pensamento</button>
     </div>
 
+    <input
+        name="search"
+        [(ngModel)]="search"
+        placeholder="Buscar pensamento"
+        class="w-full rounded-lg h-16 bg-slate-300 pl-4"
+        (keyup)="searchSentence()"
+    />
+
     <div *ngIf="sentences.length === 0">
         <p class="text-lg text-center">Ainda não há pensamentos para mostrar.</p>
     </div>
-    
+
     <div class="flex gap-8 w-100 flex-wrap">
         <div *ngFor="let item of sentences">
             <app-card

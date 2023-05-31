@@ -11,8 +11,13 @@ export class SentencesViewService {
 
   private API = 'http://localhost:3000/sentences';
 
-  list(page:number, limit:number): Observable<sentenceProps[]>{
+  list(page:number, limit:number, filter: string): Observable<sentenceProps[]>{
     let params = new HttpParams().set("_page", page).set("_limit", limit)
+
+    if(filter.trim().length > 2){
+      params = params.set("q", filter);
+    }
+
     return this.http.get<sentenceProps[]>(this.API, {params});
   }
 
